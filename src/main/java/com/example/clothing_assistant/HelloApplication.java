@@ -13,8 +13,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         System.out.println("Hello World");
         WeatherInfo info = new WeatherInfo("whatever");
-        System.out.println(info.temperatureAnalysis());
-        System.out.println(info.humidityAnalysis());
+        System.out.println(Analyzer.run(info));
 //        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
 //        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 //        stage.setTitle("Hello!");

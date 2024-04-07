@@ -7,36 +7,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WeatherInfo {
-    public List<Object> getTemperatureArr() {
+
+    public List<Double> getTemperatureArr() {
         return List.copyOf(temperatureArr);
     }
 
-    public List<Object> getHumidityArr() {
+    public List<Double> getHumidityArr() {
         return List.copyOf(humidityArr);
     }
 
-    public List<Object> getRainArr() {
+    public List<Double> getRainArr() {
         return List.copyOf(rainArr);
     }
 
-    public List<Object> getShowersArr() {
+    public List<Double> getShowersArr() {
         return List.copyOf(showersArr);
     }
 
-    public List<Object> getSnowfallArr() {
+    public List<Double> getSnowfallArr() {
         return List.copyOf(snowfallArr);
     }
 
-    public List<Object> getPressureArr() {
+    public List<Double> getPressureArr() {
         return List.copyOf(pressureArr);
     }
 
-    public List<Object> getVisibilityArr() {
+    public List<Double> getVisibilityArr() {
         return List.copyOf(visibilityArr);
     }
 
-    public List<Object> getWindArr() {
+    public List<Double> getWindArr() {
         return List.copyOf(windArr);
+    }
+    public List<Double> getPrecipitationArr() {
+        return List.copyOf(this.precipitationArr);
     }
 
     public double getLatitude() {
@@ -47,7 +51,7 @@ public class WeatherInfo {
         return longtitude;
     }
 
-    private List<Double> temperatureArr, humidityArr, rainArr, showersArr, snowfallArr, pressureArr, visibilityArr, windArr;
+    private List<Double> precipitationArr, temperatureArr, humidityArr, rainArr, showersArr, snowfallArr, pressureArr, visibilityArr, windArr;
     private double latitude, longtitude;
 
     public WeatherInfo(String data) {
@@ -124,6 +128,7 @@ public class WeatherInfo {
          this.pressureArr = JSONArrayToList(dataJSON.getJSONArray("surface_pressure"));
          this.visibilityArr = JSONArrayToList(dataJSON.getJSONArray("visibility"));
          this.windArr = JSONArrayToList(dataJSON.getJSONArray("wind_speed_10m"));
+         this.precipitationArr = JSONArrayToList(dataJSON.getJSONArray("precipitation"));
     }
     private List<Double> JSONArrayToList(JSONArray arr){
         List<Double> output = new ArrayList<>(arr.length());
@@ -132,47 +137,7 @@ public class WeatherInfo {
         }
         return output;
     }
-    private AnalysisObject analysis(List<Double> data){
-        double min = Double.MAX_VALUE, max = Double.MIN_VALUE, avg = 0;
-        int min_hour = 0, max_hour = 0;
-        for (int i = 0; i < data.size(); i++) {
-            double el = data.get(i);
-            if (el < min){
-                min = el;
-                min_hour = i;
-            }
-            if (el > max){
-                max = el;
-                max_hour = i;
-            }
-            avg += el;
-        }
-        avg /= data.size();
-        return new AnalysisObject(min, max, avg, min_hour, max_hour);
-    }
-    public AnalysisObject temperatureAnalysis(){
-        return analysis(this.temperatureArr);
-    }
-    public AnalysisObject humidityAnalysis(){
-        return analysis(this.humidityArr);
-    }
-    public AnalysisObject rainAnalysis(){
-        return analysis(this.rainArr);
-    }
-    public AnalysisObject showersAnalysis(){
-        return analysis(this.showersArr);
-    }public AnalysisObject snowfallAnalysis(){
-        return analysis(this.snowfallArr);
-    }
-    public AnalysisObject pressureAnalysis(){
-        return analysis(this.pressureArr);
-    }
-    public AnalysisObject visibilityAnalysis(){
-        return analysis(this.visibilityArr);
-    }
-    public AnalysisObject windAnalysis(){
-        return analysis(this.windArr);
-    }
+
 
 
 }
