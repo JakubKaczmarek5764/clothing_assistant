@@ -5,12 +5,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 
 public class APIConnector {
     private static BufferedReader getResponse(String url) throws IOException {
         URLConnection con = new URL(url).openConnection();
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
         return in;
     }
     public static String getWeatherInfo(double lat, double lon) throws IOException {
@@ -23,7 +26,9 @@ public class APIConnector {
     return response;
     }
     public static String getCityInfo(String cityName) throws IOException {
-        String url = String.format("https://nominatim.openstreetmap.org/search?q=%s&format=json", cityName);
+        String url = "https://nominatim.openstreetmap.org/search?q="+
+                cityName.replaceAll("\\ ", "%20")+
+                "&format=json";
         String response = getResponse(url).readLine();
         System.out.println(response);
         return response;
