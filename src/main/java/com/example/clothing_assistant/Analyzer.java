@@ -6,7 +6,7 @@ import java.util.StringJoiner;
 public class Analyzer {
 
     private static AnalysisObject analysis(List<Double> data){
-        double min = Double.MAX_VALUE, max = Double.MIN_VALUE, avg = 0;
+        double min = Double.POSITIVE_INFINITY, max = Double.NEGATIVE_INFINITY, avg = 0;
         int minHour = 0, maxHour = 0;
         for (int i = 0; i < data.size(); i++) {
             double el = data.get(i);
