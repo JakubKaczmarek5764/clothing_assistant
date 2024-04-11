@@ -1,6 +1,6 @@
-package com.example.clothing_assistant;
+package com.example.clothing_assistant_data;
 
-public class AnalysisObject {
+class AnalysisObject {
     private double min, max, avg;
     private int minHour, maxHour;
 

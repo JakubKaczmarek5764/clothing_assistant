@@ -1,4 +1,4 @@
-package com.example.clothing_assistant;
+package com.example.clothing_assistant_data;
 
 public class Keys {
     public static final String overall = "overall";
@@ -20,4 +20,7 @@ public class Keys {
     public static final String middleOutfit = "middleOutfit";
     public static final String rainCoat = "rainCoat";
     public static final String winterCoat = "winterCoat";
+    public static final String geocodingFail = "geocodingFail";
+    public static final String weatherAPIFail = "weatherAPIFail";
+
 }

@@ -1,4 +1,4 @@
-package com.example.clothing_assistant;
+package com.example.clothing_assistant_data;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

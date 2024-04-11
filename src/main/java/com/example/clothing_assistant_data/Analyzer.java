@@ -1,9 +1,9 @@
-package com.example.clothing_assistant;
+package com.example.clothing_assistant_data;
 
 import java.util.List;
 import java.util.StringJoiner;
 
-public class Analyzer {
+class Analyzer {
 
     private static AnalysisObject analysis(List<Double> data){
         double min = Double.POSITIVE_INFINITY, max = Double.NEGATIVE_INFINITY, avg = 0;
