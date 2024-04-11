@@ -7,4 +7,6 @@ module com.example.clothing_assistant {
     exports com.example.clothing_assistant_view;
     exports com.example.clothing_assistant_data;
     opens com.example.clothing_assistant_data to javafx.fxml;
+    exports com.example;
+    opens com.example to javafx.fxml;
 }

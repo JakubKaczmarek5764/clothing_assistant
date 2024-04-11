@@ -1,10 +1,12 @@
 package com.example.clothing_assistant_data;
 
+import com.example.I18nHandler;
+
 import java.io.IOException;
 
 class Data implements DataAPI {
     @Override
-    public String getAnalysis(String cityName) {
+    public String getAnalysis(String cityName, int beginningHour, int endingHour) {
         // get JSON object from geocoding API
         String analysis;
         String cityJSON = null;
@@ -27,7 +29,7 @@ class Data implements DataAPI {
         // get relevant data from JSON
         WeatherInfo weather = new WeatherInfo(weatherJSON);
         // analyze data
-        analysis = Analyzer.run(weather);
+        analysis = Analyzer.run(weather, beginningHour, endingHour);
         return analysis;
     }
 }
